@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body:Column( 
-        mainAxisAlignment:MainAxisAlignment.center,
+        mainAxisAlignment:MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
         <Widget>[
@@ -56,7 +56,33 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: transactions.map((obj){
               return Card(
-                child:Text(obj.title));
+
+                //row is used to seperate amount section from actual content section...
+                child:Row(children:
+                 <Widget>[
+                          //row 1
+                          Container(
+                            decoration: BoxDecoration(border:
+                               Border.all(color:Colors.purple,width: 2,),borderRadius: BorderRadius.circular(10),) ,
+                            margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                            padding: EdgeInsets.all(10),
+                            child:Text(
+                              obj.amount.toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Colors.purple,
+                              ),
+                              )
+                                  ),
+                          //row 2
+                          Column(children: <Widget>[
+                            Text(obj.title),
+                            Text(obj.date.toString()),
+                          ],)        
+                  
+                ],)
+                );
             }
           ).toList(),),
 
