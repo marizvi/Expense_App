@@ -14,12 +14,9 @@ TransactionList(this.transactions);
             // Column(
             Container(
             height: 320,
-            child:ListView(
-            children: 
-            // here we have not used this [] brackets because transactions is itself a list of Transaction
-            //and cards cannot be defined under the list,
-            transactions.map((obj){
-              return Card(
+            child:ListView.builder(
+              itemBuilder: (ctx,index){
+                  return Card(
                 //row is used to seperate amount section from actual content section...
                 child:Row(children:
                  [
@@ -30,7 +27,7 @@ TransactionList(this.transactions);
                             margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                             padding: EdgeInsets.all(10),
                             child:Text('\u{20B9} '+
-                            obj.amount.toString(),
+                            transactions[index].amount.toString(),
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -42,14 +39,15 @@ TransactionList(this.transactions);
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                            Text(obj.title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                            Text(transactions[index].title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
                             Text(
-                              DateFormat.yMMMEd().format(obj.date),style: TextStyle(color: Colors.grey),),
+                              DateFormat.yMMMEd().format(transactions[index].date),style: TextStyle(color: Colors.grey),),
                           ],),        
                   
                 ],)
                 );
-            }
-    ).toList(),));
+              },
+              itemCount: transactions.length,
+          ));
   }
 }
