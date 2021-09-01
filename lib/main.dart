@@ -1,4 +1,5 @@
 import 'package:exp_app/widgets/new_transaction.dart';
+import 'package:exp_app/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 import 'widgets/transaction_list.dart';
 
@@ -40,13 +41,7 @@ class MyHomePage extends StatelessWidget {
             elevation: 5,
                   ),
                 ),
-                
-                //cannot use below approach because we do not know beforehand 
-                //how much widgets do we need(i.e how much cards do we need)
-          // Column(children: <Widget>[
-          //   Card(),
-          //   Card(),
-          // ])
+                UserTransaction(),
         ]
       )
     );

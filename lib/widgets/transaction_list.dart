@@ -4,7 +4,9 @@ import "package:intl/intl.dart";
 
 class TransactionList extends StatelessWidget {
 
+final List<Transaction> transactions;
 
+TransactionList(this.transactions);
   
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class TransactionList extends StatelessWidget {
             // here we have not used this [] brackets because transactions is itself a list of Transaction
             //and cards cannot be defined under the list,
             children: 
-            _usertransaction.map((obj){
+            transactions.map((obj){
               return Card(
                 //row is used to seperate amount section from actual content section...
                 child:Row(children:
