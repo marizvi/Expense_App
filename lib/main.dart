@@ -29,7 +29,8 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter App'),
       ),
-      body:Column( 
+      body:SingleChildScrollView(
+        child:Column( 
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
         <Widget>[
@@ -44,6 +45,6 @@ class MyHomePage extends StatelessWidget {
                 UserTransaction(),
         ]
       )
-    );
+    ),);
   }
 }

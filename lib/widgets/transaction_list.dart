@@ -10,10 +10,14 @@ TransactionList(this.transactions);
   
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return  
+            // Column(
+            Container(
+            height: 320,
+            child:ListView(
+            children: 
             // here we have not used this [] brackets because transactions is itself a list of Transaction
             //and cards cannot be defined under the list,
-            children: 
             transactions.map((obj){
               return Card(
                 //row is used to seperate amount section from actual content section...
@@ -46,6 +50,6 @@ TransactionList(this.transactions);
                 ],)
                 );
             }
-          ).toList(),);
+    ).toList(),));
   }
 }
