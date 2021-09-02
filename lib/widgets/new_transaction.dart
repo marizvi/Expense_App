@@ -8,7 +8,13 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction(this.addTx);
   
-  
+  void submitData(){
+    addTx(
+          titleController.text, 
+          double.parse(amountController.text),
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,7 +35,11 @@ class NewTransaction extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(labelText:'Amount'),
                     controller: amountController,
-                    keyboardType: TextInputType.number
+                    keyboardType: TextInputType.number,
+                      // onsubmit requires String arguement to be passed,
+                      // so to avoid any error instead of any proper argument we have used '_' sign which reflects that i do pass argument but do not care about it
+                    onSubmitted: (_)=>submitData,
+
                     // onChanged: (val){
                     //   amountInput=val;
                     // },
@@ -40,11 +50,7 @@ class NewTransaction extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all(Colors.blue[600])
                     ),
                   child: Text('Add Transaction'),
-                  onPressed: (){
-                    addTx(
-                      titleController.text, 
-                      double.parse(amountController.text),
-                      );
+                  onPressed: submitData,
                     // print(titleInput);
                     // print(amountInput);
                   },
