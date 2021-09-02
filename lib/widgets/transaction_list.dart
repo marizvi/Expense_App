@@ -13,7 +13,7 @@ TransactionList(this.transactions);
     return  
             // Column(
             Container(
-            height: 320,
+            height: 420,
             child:ListView.builder(
               itemBuilder: (ctx,index){
                   return Card(
@@ -27,7 +27,7 @@ TransactionList(this.transactions);
                             margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                             padding: EdgeInsets.all(10),
                             child:Text('\u{20B9} '+
-                            transactions[index].amount.toString(),
+                            transactions[index].amount.toStringAsFixed(2), // fixing decimal places
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
