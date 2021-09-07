@@ -14,7 +14,12 @@ TransactionList(this.transactions);
             // Column(
             Container(
             height: 420,
-            child:ListView.builder(
+            child:transactions.isEmpty? 
+            Column(children: [
+              Text('No Transactions added Yet!!'),
+              
+            ],)
+             : ListView.builder(
               itemBuilder: (ctx,index){
                   return Card(
                 //row is used to seperate amount section from actual content section...
@@ -23,23 +28,32 @@ TransactionList(this.transactions);
                           //row 1
                           Container(
                             decoration: BoxDecoration(border:
-                               Border.all(color:Colors.purple,width: 2,),borderRadius: BorderRadius.circular(10),) ,
+                               Border.all(
+                                color:Theme.of(context).primaryColor,
+                               width: 2,
+                               ),
+                               borderRadius: BorderRadius.circular(10),
+                               ) ,
                             margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                             padding: EdgeInsets.all(10),
                             child:Text('\u{20B9} '+
                             transactions[index].amount.toStringAsFixed(2), // fixing decimal places
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Colors.purple,
+                                fontSize: 13,
+                                color:Theme.of(context).primaryColor,
                               ),
                               )
-                                  ),
+                              ),
                           //row 2
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                            Text(transactions[index].title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                            Text(
+                              transactions[index].title, 
+                              style: 
+                              TextStyle(fontSize: 18,fontFamily: 'Open Sans',fontWeight: FontWeight.w500),
+                              ),
                             Text(
                               DateFormat.yMMMEd().format(transactions[index].date),style: TextStyle(color: Colors.grey),),
                           ],),        

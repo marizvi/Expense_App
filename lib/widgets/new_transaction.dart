@@ -25,10 +25,15 @@ class _NewTransactionState extends State<NewTransaction> {
         return;
       }
 
+    // widget.something allows us to access property of widget class inside state class
     widget.addTx(
           titleController.text, 
           double.parse(amountController.text),
           );
+
+  Navigator.of(context).pop();
+  //navigator allows us to close topmost screen..
+  //navigator is a property of State class.
   }
 
   @override
