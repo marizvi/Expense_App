@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
+import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
 
@@ -9,9 +10,10 @@ class Chart extends StatelessWidget {
 
 
       List<Map<String,Object>> get groupedTransactionValues{
-        return List.generate(7,(index){
+        return List.generate(7,(index) {
+          final weekDay = DateTime.now().subtract(Duration(days:index),);
           return {
-            'Day' : 'T',
+            'Day' : DateFormat.E(weekDay),//gives m for monday, t for tuesday etc {imported from intl}
             'amount' : 9.99,
           };
         });
