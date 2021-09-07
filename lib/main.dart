@@ -55,6 +55,15 @@ final List<Transaction> _usertransaction = [
     //   ), 
   ];
 
+List<Transaction> get _recentTransactions{
+  return _usertransaction.where((tx){
+    return tx.date.isAfter(
+      DateTime.now().subtract(Duration(days:7),
+    )
+    );
+  }).toList();
+}
+
 void _addNewTranscation(String txtitle, double txamount)
 {
   final newTx = Transaction(
@@ -90,6 +99,7 @@ void startAddNewTransaction(BuildContext ctx)
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter App'),
@@ -103,8 +113,7 @@ void startAddNewTransaction(BuildContext ctx)
         children:
         <Widget>[
            
-           Chart(),
-
+           Chart(_recentTransactions),
                 // UserTransaction(),
                 TransactionList(_usertransaction),
 

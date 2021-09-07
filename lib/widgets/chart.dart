@@ -8,6 +8,7 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
+// below one is known as getter and getter does not have any arguement lists
 
       List<Map<String,Object>> get groupedTransactionValues{
         return List.generate(7,(index) {
@@ -26,8 +27,11 @@ class Chart extends StatelessWidget {
                   }
           }
 
+          print(DateFormat.E().format(weekDay));
+          print(totalSum);
+
           return {
-            'Day' : DateFormat.E(weekDay),//gives m for monday, t for tuesday etc {imported from intl}
+            'Day' : DateFormat.E().format(weekDay),//gives m for monday, t for tuesday etc {imported from intl}
             'amount' : 9.99,
           };
         });
@@ -35,6 +39,7 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(groupedTransactionValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
