@@ -1,6 +1,7 @@
 import 'package:exp_app/widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
 import 'widgets/transaction_list.dart';
+import 'widgets/chart.dart';
 import '../models/transaction.dart';
 
 
@@ -101,14 +102,9 @@ void startAddNewTransaction(BuildContext ctx)
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
         <Widget>[
-            Container(
-              width: double.infinity,
-              child:Card(
-                color: Colors.blue[200],
-              child: Text('Chart!'),
-            elevation: 5,
-                  ),
-                ),
+           
+           Chart(),
+
                 // UserTransaction(),
                 TransactionList(_usertransaction),
 
