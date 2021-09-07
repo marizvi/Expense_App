@@ -16,8 +16,22 @@ TransactionList(this.transactions);
             height: 420,
             child:transactions.isEmpty? 
             Column(children: [
-              Text('No Transactions added Yet!!'),
-              
+              Text('No Transactions added Yet!!',
+              style: TextStyle(fontFamily: 'Open Sans'),
+              ),
+              // to add space between abovetext and below image we used.
+              SizedBox(
+                height: 20,
+              ),
+
+              Container(
+                height: 380,
+                width: double.infinity,
+              child: Image.asset('assets/images/img1.png',
+              fit: BoxFit.cover
+              ),
+              )
+
             ],)
              : ListView.builder(
               itemBuilder: (ctx,index){
