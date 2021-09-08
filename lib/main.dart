@@ -55,11 +55,19 @@ final List<Transaction> _usertransaction = [
     //   ), 
   ];
 
-List<Transaction> get _recentTransactions{
+// this recentTransaction getter is being transfered to chart widget
+//finding all transactions younger than today minus 7 days
+List<Transaction> get _recentTransactions{ 
+  // can also be achieved through for loop
+  // where allows us to run function for every item in a list
+  // if that function is true then that item is kept in a newly returned list otherwise its not included
+  // in newly returned list.
   return _usertransaction.where((tx){
+    // isAfter is presesnt in DateTime object
     return tx.date.isAfter(
       DateTime.now().subtract(Duration(days:7),
     )
+      //only transactions younger than 7 days are included here
     );
   }).toList();
 }
