@@ -57,7 +57,13 @@ double get totalSpending{
         children: groupedTransactionValues.map((data){
             // return Text(data['day'] + ':' + data['amount'].toString(),);
             //if statements are like above and we are recieving any error then go for below kind of statement.
-            return ChartBar((data['day'] as String), (data['amount'] as double), (data['amount'] as double)/totalSpending);
+            return ChartBar(
+              (data['day'] as String),
+               (data['amount'] as double),
+              //  (data['amount'] as double)/totalSpending, //this one is absolutely fine but since this app do not uses any database,
+              // so whenever we start the app with 0 entries then it will produce error so to avoid this error temporary we used below statement..
+               totalSpending == 0.0 ? 0.0 : (data['amount'] as double)/totalSpending,
+               );
       }).toList(),
         
       ),
