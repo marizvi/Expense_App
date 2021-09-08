@@ -1,3 +1,4 @@
+import 'package:exp_app/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
 import 'package:intl/intl.dart';
@@ -40,6 +41,12 @@ class Chart extends StatelessWidget {
         });
       }
 
+double get totalSpending{
+  return groupedTransactionValues.fold(0.0,(sum,item){
+    return sum + (item['amount'] as num);
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     print(groupedTransactionValues);
@@ -50,7 +57,7 @@ class Chart extends StatelessWidget {
         children: groupedTransactionValues.map((data){
             // return Text(data['day'] + ':' + data['amount'].toString(),);
             //if statements are like above and we are recieving any error then go for below kind of statement.
-            return Text('${data['day']} : ${data['amount']}');
+            return ChartBar((data['day'] as String), (data['amount'] as double), (data['amount'] as double)/totalSpending);
       }).toList(),
         
       ),
