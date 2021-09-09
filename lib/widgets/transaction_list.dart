@@ -35,44 +35,31 @@ TransactionList(this.transactions);
             ],)
              : ListView.builder(
               itemBuilder: (ctx,index){
-                  return Card(
-                //row is used to seperate amount section from actual content section...
-                child:Row(children:
-                 [
-                          //row 1
-                          Container(
-                            decoration: BoxDecoration(border:
-                               Border.all(
-                                color:Theme.of(context).primaryColor,
-                               width: 2,
-                               ),
-                               borderRadius: BorderRadius.circular(10),
-                               ) ,
-                            margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
-                            padding: EdgeInsets.all(10),
-                            child:Text('\u{20B9} '+
-                            transactions[index].amount.toStringAsFixed(2), // fixing decimal places
-                              style: TextStyle(
+                return Card(
+                  elevation: 6,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 40,
+                    child: Padding(
+                      padding: EdgeInsets.all(6),
+                    child: FittedBox(
+                      child: Text('\u{20B9} ${transactions[index].amount}',
+                      style:TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                color:Theme.of(context).primaryColor,
+                                fontSize: 12,
+                                color:Theme.of(context).primaryColorLight,
                               ),
-                              )
                               ),
-                          //row 2
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                            Text(
-                              transactions[index].title, 
-                              style: 
-                              TextStyle(fontSize: 18,fontFamily: 'Open Sans',fontWeight: FontWeight.w500),
-                              ),
-                            Text(
-                              DateFormat.yMMMEd().format(transactions[index].date),style: TextStyle(color: Colors.grey),),
-                          ],),        
-                  
-                ],)
+                      ),
+                    ),
+                  ),
+                  title: Text(transactions[index].title,
+                  style: 
+                        TextStyle(fontSize: 18,fontFamily: 'Open Sans',fontWeight: FontWeight.w500),
+                  ),
+                  subtitle: Text(DateFormat.yMMMEd().format(transactions[index].date)),
+                ),
                 );
               },
               itemCount: transactions.length,

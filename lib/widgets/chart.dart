@@ -38,7 +38,7 @@ class Chart extends StatelessWidget {
             'day' : DateFormat.E().format(weekDay).substring(0,1),//gives m for monday, t for tuesday etc {imported from intl}
             'amount' : totalSum,
           };
-        });
+        }).reversed.toList();// reversed is used to arrange data 
       }
 
 double get totalSpending{
@@ -53,20 +53,27 @@ double get totalSpending{
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
+      child:
+      Container( // just to set padding
+        padding: EdgeInsets.all(4),
+        child:
+       Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: groupedTransactionValues.map((data){
             // return Text(data['day'] + ':' + data['amount'].toString(),);
             //if statements are like above and we are recieving any error then go for below kind of statement.
-            return ChartBar(
+            return Flexible( 
+              fit: FlexFit.tight,// without this, if we add on transactions then when amount is larger other bars will start shifting creating disorder
+            child: ChartBar(
               (data['day'] as String),
                (data['amount'] as double),
               //  (data['amount'] as double)/totalSpending, //this one is absolutely fine but since this app do not uses any database,
               // so whenever we start the app with 0 entries then it will produce error so to avoid this error temporary we used below statement..
                totalSpending == 0.0 ? 0.0 : (data['amount'] as double)/totalSpending,
-               );
+               ),);
       }).toList(),
         
       ),
-    );
+       ),   );
   }
 }

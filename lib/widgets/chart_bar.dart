@@ -12,7 +12,11 @@ class ChartBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children:[
+      //fittedbox allows us to shrink data whenever its becoming large enough
+      FittedBox(
+        child:
       Text('\u{20B9} ${spendingAmount.toStringAsFixed(0)}'),
+      ),
       SizedBox(height: 4),
       Container(
         height: 60,
@@ -24,7 +28,8 @@ class ChartBar extends StatelessWidget {
               color: Colors.grey,
               width: 1.0
              ),
-             color: Color.fromRGBO(220,220,220,1),
+            //  color: Color.fromRGBO(220,220,220,1),
+            
              borderRadius: BorderRadius.circular(10)
              ),
              ),
