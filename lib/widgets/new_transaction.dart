@@ -68,10 +68,9 @@ class _NewTransactionState extends State<NewTransaction> {
                   ),
                   Row(children: [
                     Text('No Date Chosen!'),
-                    ElevatedButton(
+                    TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.amber[600]),
-                        foregroundColor: MaterialStateProperty.all(Colors.black)
+                        foregroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor)
                       ),
                       onPressed: (){},
                      child: Text("Choose Date"),
