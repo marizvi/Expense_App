@@ -18,8 +18,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         accentColor: Colors.amber,
         fontFamily: 'DancingScript',
-
-          
+           textTheme:ThemeData.light().textTheme.copyWith(
+          button: TextStyle(color: Colors.white),
+          title: TextStyle(
+                          fontFamily: 'Roboto', 
+                          fontSize: 20,
+                          fontWeight:FontWeight.w800
+                          ),
+          ),
          //with this we can only provide Roboto font to whole appbar title.
           appBarTheme: AppBarTheme(
           textTheme:ThemeData.light().textTheme.copyWith(
@@ -27,8 +33,9 @@ class MyApp extends StatelessWidget {
                           fontFamily: 'Roboto', 
                           fontSize: 20,
                           fontWeight:FontWeight.w800
-                          )
-          ))
+                          ),
+          ),
+          )
        ),
       home: MyHomePage(),
     );

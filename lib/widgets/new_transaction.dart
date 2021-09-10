@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
 
@@ -14,6 +15,8 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
 
   final amountController = TextEditingController();
+
+  DateTime? _selectedDate; // improtant '?'
 
   void submitData(){
 
@@ -34,6 +37,22 @@ class _NewTransactionState extends State<NewTransaction> {
   Navigator.of(context).pop();
   //navigator allows us to close topmost screen..
   //navigator is a property of State class.
+  } 
+
+  void _presentDatePicker(){
+    showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2021), 
+      lastDate: DateTime.now()
+      ).then((pickedDate){
+          if( pickedDate==null)
+          return;
+          setState(() {
+          _selectedDate = pickedDate;
+          });
+      });
+      print(".....");
   }
 
   @override
@@ -67,23 +86,28 @@ class _NewTransactionState extends State<NewTransaction> {
                     // },
                   ),
                   Row(children: [
-                    Text('No Date Chosen!'),
+                    Expanded(child: 
+                    Text(_selectedDate == null ? 'No Date Chosen!' : DateFormat.yMd().format(_selectedDate!),// important '!'
+                     style: TextStyle(fontFamily: 'Roboto'),
+                     ),),
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor)
                       ),
-                      onPressed: (){},
-                     child: Text("Choose Date"),
+                      onPressed: _presentDatePicker,
+                     child: Text("Choose Date",
+                     style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
+                     ),
                      )
                   ],
-
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.amber[600])
+                      backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor)
                     ),
                   child: Text('Add Transaction',
-                  style: TextStyle(color: Colors.black ),
+                  // style: TextStyle(color: Theme.of(context).textTheme.button.color, fontFamily: 'Roboto' ),
+                  style: TextStyle(color: Colors.white, fontFamily: 'Roboto' ),
                   ),
                   onPressed: submitData,
                     // print(titleInput);
