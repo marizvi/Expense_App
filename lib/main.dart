@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'widgets/transaction_list.dart';
 import 'widgets/chart.dart';
 import '../models/transaction.dart';
+import 'package:intl/intl.dart';
 
 
 void main() { 
@@ -79,13 +80,13 @@ List<Transaction> get _recentTransactions{
   }).toList();
 }
 
-void _addNewTranscation(String txtitle, double txamount)
+void _addNewTranscation(String txtitle, double txamount, DateTime chosenDate )
 {
   final newTx = Transaction(
     DateTime.now().toString(), 
     txtitle,
      txamount, 
-     DateTime.now()
+     chosenDate,
      );
      
      setState(() {
