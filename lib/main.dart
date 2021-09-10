@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
         accentColor: Colors.amber,
+        errorColor: Colors.red,
         fontFamily: 'DancingScript',
            textTheme:ThemeData.light().textTheme.copyWith(
           button: TextStyle(color: Colors.white),
@@ -94,6 +95,14 @@ void _addNewTranscation(String txtitle, double txamount, DateTime chosenDate )
      });
 }
 
+void _deleteTransaction(String id)
+{
+  setState(() {
+    _usertransaction.removeWhere((tx){
+      return tx.id == id;
+    } );
+  });
+}
 
 void startAddNewTransaction(BuildContext ctx)
 {
@@ -131,7 +140,7 @@ void startAddNewTransaction(BuildContext ctx)
            
            Chart(_recentTransactions),
                 // UserTransaction(),
-                TransactionList(_usertransaction),
+                TransactionList(_usertransaction,_deleteTransaction),
 
         ]
       )
