@@ -35,6 +35,7 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addTx(
           titleController.text, 
           double.parse(amountController.text),
+          _selectedDate,
           );
 
   Navigator.of(context).pop();
