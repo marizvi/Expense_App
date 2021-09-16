@@ -65,7 +65,7 @@ final List<Transaction> _usertransaction = [
   ];
 
 // this recentTransaction getter is being transfered to chart widget
-//finding all transactions younger than today minus 7 days
+// finding all transactions younger than today minus 7 days
 List<Transaction> get _recentTransactions{ 
   // can also be achieved through for loop
   // where allows us to run function for every item in a list

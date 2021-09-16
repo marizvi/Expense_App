@@ -32,6 +32,7 @@ class _NewTransactionState extends State<NewTransaction> {
       }
 
     // widget.something allows us to access property of widget class inside state class
+    // because addTx is not defined in state class
     widget.addTx(
           titleController.text, 
           double.parse(amountController.text),
