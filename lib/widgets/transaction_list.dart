@@ -14,7 +14,7 @@ TransactionList(this.transactions, this.deleteTx);
     return 
             // Column(
             Container(
-            height: 420,
+            height: 500,
             child:transactions.isEmpty? 
             Column(children: [
               Text('No Transactions added Yet!!',
