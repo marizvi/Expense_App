@@ -109,15 +109,16 @@ void startAddNewTransaction(BuildContext ctx)
   showModalBottomSheet(context: ctx, 
   builder: (_)
    {
-    // or simply, return NewTransaction(_addNewTranscation),
+    // or simply, 
+    return NewTransaction(_addNewTranscation);
 
-     // not understood anything about gesture..
+     // if even clicking at the bottom sheet, sheet gets closes then use below gesture method
      
-      return GestureDetector(
-        onTap: (){},
-        child: NewTransaction(_addNewTranscation),
-        behavior: HitTestBehavior.opaque,
-        );
+      // return GestureDetector(
+      //   onTap: (){}, // does nothing on tapping i.e avoids closing the sheet if we tap on sheet
+      //   child: NewTransaction(_addNewTranscation),
+      //   behavior: HitTestBehavior.opaque,
+      //   );
    }
    );
 }
