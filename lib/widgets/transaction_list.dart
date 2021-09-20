@@ -44,7 +44,7 @@ TransactionList(this.transactions, this.deleteTx);
                     radius: 40,
                     child: Padding(
                       padding: EdgeInsets.all(6),
-                    child: FittedBox(
+                    // child: FittedBox(
                       child: Text('\u{20B9} ${transactions[index].amount}',
                       style:TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ TransactionList(this.transactions, this.deleteTx);
                                 color:Theme.of(context).primaryColorLight,
                               ),
                               ),
-                      ),
+                      // ),
                     ),
                   ),
                   title: Text(transactions[index].title,
