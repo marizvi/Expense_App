@@ -72,7 +72,7 @@ List<Transaction> get _recentTransactions{
   // if that function is true then that item is kept in a newly returned list otherwise its not included
   // in newly returned list.
   return _usertransaction.where((tx){
-    // isAfter is presesnt in DateTime object
+    // isAfter returns either true or false
     return tx.date.isAfter(
       DateTime.now().subtract(Duration(days:7),
     )
@@ -80,6 +80,9 @@ List<Transaction> get _recentTransactions{
     );
   }).toList();
 }
+
+// getter just provide all transactions in last 7 days
+//now go to chart.dart
 
 void _addNewTranscation(String txtitle, double txamount, DateTime chosenDate )
 {

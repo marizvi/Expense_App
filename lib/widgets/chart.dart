@@ -17,6 +17,7 @@ class Chart extends StatelessWidget {
         return List.generate(7,(index) {
           // if index = 0, then our weekday will be today and if index = 1 then our weekday will be yesterday.
           final weekDay = DateTime.now().subtract(Duration(days:index),);
+          //provide weekdays of last 7 days..
           double totalSum=0.0;
           for(var i=0;i<recentTransactions.length;i++)
           {
@@ -41,6 +42,10 @@ class Chart extends StatelessWidget {
         }).reversed.toList();// reversed is used to arrange data 
       }
 
+// above getter summons up all transactions of a single day into one and 
+//calculates total amount spent on that particular day
+
+
 double get totalSpending{
   return groupedTransactionValues.fold(0.0,(sum,item){
     return sum + (item['amount'] as num);
@@ -49,7 +54,7 @@ double get totalSpending{
 
   @override
   Widget build(BuildContext context) {
-    print(groupedTransactionValues);
+    // print(groupedTransactionValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
