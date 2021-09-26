@@ -62,7 +62,7 @@ double get totalSpending{
       Container( // just to set padding
         padding: EdgeInsets.all(4),
         child:
-       Row(
+       Row( // row will occupy height of the largest bar
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: groupedTransactionValues.map((data){
             // return Text(data['day'] + ':' + data['amount'].toString(),);

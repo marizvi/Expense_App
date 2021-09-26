@@ -156,13 +156,16 @@ bool _showChart = false;
             ),
            _showChart ?
            Container(
-             height: MediaQuery.of(context).size.height*0.22,
+             height: MediaQuery.of(context).size.height*0.6,
              child: 
            Chart(_recentTransactions),
            ):
-           
+
                 // UserTransaction(),
-                TransactionList(_usertransaction,_deleteTransaction),
+                Container(
+                  height: MediaQuery.of(context).size.height*0.6,
+                child: TransactionList(_usertransaction,_deleteTransaction),
+                )
 
         ]
       )

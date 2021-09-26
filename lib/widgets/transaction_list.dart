@@ -16,7 +16,9 @@ TransactionList(this.transactions, this.deleteTx);
             Container(
             height: MediaQuery.of(context).size.height * 0.7,
             child:transactions.isEmpty? 
-            Column(children: [
+            LayoutBuilder(builder: (ctx,constraints){
+              
+              return Column(children: [
               Text('No Transactions added Yet!!',
               style: TextStyle(fontFamily: 'Open Sans'),
               ),
@@ -26,14 +28,16 @@ TransactionList(this.transactions, this.deleteTx);
               ),
 
               Container(
-                height: 380,
+                height: constraints.maxHeight*0.7,
                 width: double.infinity,
               child: Image.asset('assets/images/img1.png',
               fit: BoxFit.cover
               ),
               )
 
-            ],)
+            ],);
+            })
+            
              : ListView.builder(
               itemBuilder: (ctx,index){
                 return Card(
