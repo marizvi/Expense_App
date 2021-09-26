@@ -6,7 +6,7 @@ import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
 
-void main() { 
+void main() {  
   runApp(MyApp());
 }
 
@@ -21,11 +21,12 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.red,
         fontFamily: 'DancingScript',
            textTheme:ThemeData.light().textTheme.copyWith(
-          button: TextStyle(color: Colors.white),
+          // button: TextStyle(color: Colors.white),
           title: TextStyle(
+                          color: Colors.white,
                           fontFamily: 'Roboto', 
-                          fontSize: 20,
-                          fontWeight:FontWeight.w800
+                          fontSize: 12,
+                          fontWeight:FontWeight.w400
                           ),
           ),
          //with this we can only provide Roboto font to whole appbar title.
@@ -125,7 +126,7 @@ void startAddNewTransaction(BuildContext ctx)
    }
    );
 }
-
+bool _showChart = false;
   @override
   Widget build(BuildContext context) {
     
@@ -141,12 +142,25 @@ void startAddNewTransaction(BuildContext ctx)
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
         <Widget>[
-           
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Show Chart'),
+              Switch(value: _showChart, onChanged: (val){
+                setState(() {
+                  _showChart = val;
+                });
+              })
+            ],
+            ),
+           _showChart ?
            Container(
              height: MediaQuery.of(context).size.height*0.22,
              child: 
            Chart(_recentTransactions),
-           ),
+           ):
+           
                 // UserTransaction(),
                 TransactionList(_usertransaction,_deleteTransaction),
 

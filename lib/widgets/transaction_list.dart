@@ -46,11 +46,12 @@ TransactionList(this.transactions, this.deleteTx);
                       padding: EdgeInsets.all(6),
                     // child: FittedBox(
                       child: Text('\u{20B9} ${transactions[index].amount}',
-                      style:TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                                color:Theme.of(context).primaryColorLight,
-                              ),
+                      style:Theme.of(context).textTheme.title,
+                      // TextStyle(
+                      //           fontWeight: FontWeight.bold,
+                      //           fontSize: 12,
+                      //           color:Theme.of(context).primaryColorLight,
+                      //         ),
                               ),
                       // ),
                     ),
