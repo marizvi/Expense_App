@@ -142,7 +142,11 @@ void startAddNewTransaction(BuildContext ctx)
         children:
         <Widget>[
            
+           Container(
+             height: MediaQuery.of(context).size.height*0.22,
+             child: 
            Chart(_recentTransactions),
+           ),
                 // UserTransaction(),
                 TransactionList(_usertransaction,_deleteTransaction),
 

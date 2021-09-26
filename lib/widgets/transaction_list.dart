@@ -14,7 +14,7 @@ TransactionList(this.transactions, this.deleteTx);
     return 
             // Column(
             Container(
-            height: 500,
+            height: MediaQuery.of(context).size.height * 0.7,
             child:transactions.isEmpty? 
             Column(children: [
               Text('No Transactions added Yet!!',
