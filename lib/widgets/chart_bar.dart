@@ -53,7 +53,7 @@ class ChartBar extends StatelessWidget {
       ),
       SizedBox(height: constraint.maxHeight * 0.05),
       Container(
-        height: constraint.maxHeight*0.02, //whenever trying to make font responsive always wrap text widget inside container
+        height: constraint.maxHeight*0.15, //whenever trying to make font responsive always wrap text widget inside container
         child: Text(label))
     ]
     );
