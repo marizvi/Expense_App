@@ -11,15 +11,20 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children:[
+    return LayoutBuilder(builder: (ctx,constraint){
+      return Column(children:[
       //fittedbox allows us to shrink data whenever its becoming large enough
+      Container(
+        height: constraint.maxHeight*0.15,
+        child:
       FittedBox(
         child:
       Text('\u{20B9} ${spendingAmount.toStringAsFixed(0)}'),
-      ),
-      SizedBox(height: 4),
+      ),),
+      SizedBox(height: constraint.maxHeight*0.05,),
       Container(
-        height: 60,
+        // height: MediaQuery.of(context).size.height*0.08,//also possible through this way
+        height:constraint.maxHeight*0.6,
         width: 10,
         child: Stack(
           children: [
@@ -46,9 +51,13 @@ class ChartBar extends StatelessWidget {
           ],
         ),
       ),
-      SizedBox(height: 4),
-      Text(label)
+      SizedBox(height: constraint.maxHeight * 0.05),
+      Container(
+        height: constraint.maxHeight*0.02, //whenever trying to make font responsive always wrap text widget inside container
+        child: Text(label))
     ]
     );
+    },);
+    
   }
 }
