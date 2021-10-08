@@ -38,7 +38,7 @@ TransactionList(this.transactions, this.deleteTx);
             ],);
             })
             
-             : ListView.builder(
+             : ListView.builder( //makes the list scrollable otherwise if used only column then it is not scrollable
               itemBuilder: (ctx,index){
                 return Card(
                   elevation: 6,
@@ -66,7 +66,17 @@ TransactionList(this.transactions, this.deleteTx);
                   ),
                   subtitle: Text(DateFormat.yMMMEd().format(transactions[index].date)
                   ),
-                  trailing: IconButton(
+                  trailing: MediaQuery.of(context).size.width>420?
+                  TextButton.icon(
+                    onPressed: ()=>deleteTx(transactions[index].id), // always pass any function recieving arguements in this manner only
+                    icon: Icon(Icons.delete), 
+                    label: Text("Delete"),
+                    style: ButtonStyle(
+                    // backgroundColor:  MaterialStateProperty.all(Colors.redAccent[400]),
+                    foregroundColor: MaterialStateProperty.all( Theme.of(context).errorColor) // to change text color
+                    ),
+                    ):
+                  IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: ()=>deleteTx(transactions[index].id), // always pass any function recieving arguements in this manner only
                     color: Theme.of(context).errorColor,

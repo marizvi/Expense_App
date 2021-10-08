@@ -15,7 +15,7 @@ class ChartBar extends StatelessWidget {
       return Column(children:[
       //fittedbox allows us to shrink data whenever its becoming large enough
       Container(
-        height: constraint.maxHeight*0.15,
+        height: constraint.maxHeight*0.13,
         child:
       FittedBox(
         child:
