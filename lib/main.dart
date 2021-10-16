@@ -109,7 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
         context: ctx,
         builder: (_) {
           // or simply,
-          return NewTransaction(_addNewTranscation);
+          return 
+          NewTransaction(_addNewTranscation);
 
           // if even clicking at the bottom sheet, sheet gets closes then use below gesture method
 

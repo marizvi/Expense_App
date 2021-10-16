@@ -69,6 +69,7 @@ class _NewTransactionState extends State<NewTransaction> {
               bottom: MediaQuery.of(context).viewInsets.bottom + 10,
               ),
             child: Column(
+              
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 TextField(
