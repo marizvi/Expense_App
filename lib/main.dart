@@ -204,20 +204,20 @@ class _MyHomePageState extends State<MyHomePage> {
 //                     ],
 //                 ),
 // // 
-            // if (isLandScape)
-            //   _showChart
-            //       ? Container(
-            //           height: mediaquery.size.height * 0.6,
-            //           child: Chart(_recentTransactions),
-            //         )
-            //       : txList,
+//             if (isLandScape)
+//               _showChart
+//                   ? Container(
+//                       height: mediaquery.size.height * 0.6,
+//                       child: Chart(_recentTransactions),
+//                     )
+//                   : txList,
 
-            // if (!isLandScape)
-            //   Container(
-            //     height: mediaquery.size.height * 0.25,
-            //     child: Chart(_recentTransactions),
-            //   ),
-            // if (!isLandScape) txList
+//             if (!isLandScape)
+//               Container(
+//                 height: mediaquery.size.height * 0.25,
+//                 child: Chart(_recentTransactions),
+//               ),
+//             if (!isLandScape) txList
 
             //OR
              if (isLandScape) 
