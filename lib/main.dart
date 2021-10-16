@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:exp_app/widgets/new_transaction.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'widgets/transaction_list.dart';
 import 'widgets/chart.dart';
@@ -118,6 +121,40 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  List<Widget> _buildLandScapeContent(MediaQueryData mediaquery, Widget txList) {
+    return [
+      Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Show Chart'),
+        Switch(
+            value: _showChart,
+            onChanged: (val) {
+              setState(() {
+                _showChart = val;
+              });
+            })
+      ],
+    ),
+     _showChart
+                  ? Container(
+                      height: mediaquery.size.height * 0.6,
+                      child: Chart(_recentTransactions),
+                    )
+                  : txList,
+    ];
+  }
+
+  List<Widget> _buildPotraitContent(MediaQueryData mediaquery, Widget txList) {
+    return [
+      Container(
+        height: mediaquery.size.height * 0.25,
+        child: Chart(_recentTransactions),
+      ),
+      txList
+    ];
+  }
+
   bool _showChart = false;
   @override
   Widget build(BuildContext context) {
@@ -148,35 +185,44 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+           
             //since below if inside an array (children[]) so in these types of array we dont use curly braces..
-            if (isLandScape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Show Chart'),
-                  Switch(
-                      value: _showChart,
-                      onChanged: (val) {
-                        setState(() {
-                          _showChart = val;
-                        });
-                      })
-                ],
-              ),
-            if (isLandScape)
-              _showChart
-                  ? Container(
-                      height: mediaquery.size.height * 0.6,
-                      child: Chart(_recentTransactions),
-                    )
-                  : txList,
+            // hence this 'if' will habe control of only the statement just after it,
+//             if(isLandScape)
+//             Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                 Text('Show Chart'),
+//                     Switch(
+//                             value: _showChart,
+//                             onChanged: (val) {
+//                             setState(() {
+//                             _showChart = val;
+//                           });
+//                           })
+//                     ],
+//                 ),
+// // 
+            // if (isLandScape)
+            //   _showChart
+            //       ? Container(
+            //           height: mediaquery.size.height * 0.6,
+            //           child: Chart(_recentTransactions),
+            //         )
+            //       : txList,
 
+            // if (!isLandScape)
+            //   Container(
+            //     height: mediaquery.size.height * 0.25,
+            //     child: Chart(_recentTransactions),
+            //   ),
+            // if (!isLandScape) txList
+
+            //OR
+             if (isLandScape) 
+            ..._buildLandScapeContent(mediaquery,txList),
             if (!isLandScape)
-              Container(
-                height: mediaquery.size.height * 0.25,
-                child: Chart(_recentTransactions),
-              ),
-            if (!isLandScape) txList
+            ..._buildPotraitContent(mediaquery, txList),
 
             // UserTransaction(),
           ])),
